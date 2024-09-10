@@ -1,5 +1,5 @@
 import { router } from "expo-router";
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import NfcManager, { NfcTech } from "react-native-nfc-manager";
 
@@ -7,26 +7,30 @@ import NfcManager, { NfcTech } from "react-native-nfc-manager";
 NfcManager.start();
 
 function Nfc() {
+  const [scan, setScan] = useState(false);
+
   async function readNdef() {
     try {
+      setScan(true);
       // register for the NFC tag with NDEF in it
       await NfcManager.requestTechnology(NfcTech.Ndef);
       // the resolved tag object will contain `ndefMessage` property
       const tag = await NfcManager.getTag();
       console.warn("Tag found", tag);
-      router.push("/login");
+      router.push("/map");
     } catch (ex) {
       console.warn("Oops!", ex);
     } finally {
       // stop the nfc scanning
       NfcManager.cancelTechnologyRequest();
+      setScan(false);
     }
   }
 
   return (
     <View style={styles.wrapper}>
       <TouchableOpacity onPress={readNdef}>
-        <Text>Scan a Tag</Text>
+        <Text>{scan ? "Scanning..." : "Scan a Tag"}</Text>
       </TouchableOpacity>
     </View>
   );
