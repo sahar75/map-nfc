@@ -1,7 +1,8 @@
 import { router } from "expo-router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import NfcManager, { NfcTech } from "react-native-nfc-manager";
+import SimCardsManagerModule from "react-native-sim-cards-manager";
 
 // Pre-step, call this before any NFC operations
 NfcManager.start();
@@ -26,6 +27,22 @@ function Nfc() {
       setScan(false);
     }
   }
+
+  useEffect(() => {
+    SimCardsManagerModule.getSimCards({
+      title: "App Permission",
+      message: "Custom message",
+      buttonNeutral: "Not now",
+      buttonNegative: "Not OK",
+      buttonPositive: "OK",
+    })
+      .then((array: Array<any>) => {
+        console.log(array);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <View style={styles.wrapper}>
