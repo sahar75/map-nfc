@@ -1,10 +1,9 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import Nfc from "../../components/Nfc";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>test</Text>
       <Nfc />
     </View>
   );
