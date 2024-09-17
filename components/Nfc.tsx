@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import NfcManager, { NfcTech } from "react-native-nfc-manager";
 import SimCardsManagerModule from "react-native-sim-cards-manager";
+import RNSimData from "react-native-sim-data";
 
 // Pre-step, call this before any NFC operations
 NfcManager.start();
@@ -37,7 +38,7 @@ function Nfc() {
       buttonPositive: "OK",
     })
       .then((array: Array<any>) => {
-        console.log(array);
+        console.log("sims info", array);
       })
       .catch((error) => {
         console.log(error);

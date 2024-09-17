@@ -111,8 +111,8 @@ def jscFlavor = 'org.webkit:android-jsc:+'
 android {
     ndkVersion rootProject.ext.ndkVersion
 
-    buildToolsVersion rootProject.ext.buildToolsVersion
-    compileSdk rootProject.ext.compileSdkVersion
+    buildToolsVersion "34.0.0"
+    compileSdk 34
 
     namespace 'com.sahar752.map'
     defaultConfig {

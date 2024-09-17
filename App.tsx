@@ -5,7 +5,6 @@ import Nfc from "./components/Nfc";
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>test</Text>
       <StatusBar style="auto" />
       <Nfc />
     </View>
