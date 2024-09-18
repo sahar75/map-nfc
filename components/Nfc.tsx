@@ -1,9 +1,8 @@
 import { router } from "expo-router";
 import React, { useEffect, useState } from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import NfcManager, { NfcTech } from "react-native-nfc-manager";
 import SimCardsManagerModule from "react-native-sim-cards-manager";
-import RNSimData from "react-native-sim-data";
 
 // Pre-step, call this before any NFC operations
 NfcManager.start();

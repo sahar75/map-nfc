@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OriginMarker should render correctly with given route points 1`] = `
+<Marker
+  anchor={
+    {
+      "x": 0.45,
+      "y": 0.7,
+    }
+  }
+  coordinate={
+    {
+      "latitude": 37.78825,
+      "longitude": -122.4324,
+    }
+  }
+  image={
+    {
+      "testUri": "../../../assets/images/origin.png",
+    }
+  }
+  title="Origin"
+/>
+`;
+
+exports[`OriginMarker should render correctly with no route points 1`] = `
+<Marker
+  anchor={
+    {
+      "x": 0.45,
+      "y": 0.7,
+    }
+  }
+  coordinate={
+    {
+      "latitude": 0,
+      "longitude": 0,
+    }
+  }
+  image={
+    {
+      "testUri": "../../../assets/images/origin.png",
+    }
+  }
+  title="Origin"
+/>
+`;

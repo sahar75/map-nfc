@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmptyState should render correctly with a title 1`] = `
+<View
+  className="justify-center items-center px-4"
+>
+  <Text
+    className="text-xl text-center font-psemibold mt-2"
+  >
+    No Data Available
+  </Text>
+</View>
+`;
+
+exports[`EmptyState should render correctly with an empty title 1`] = `
+<View
+  className="justify-center items-center px-4"
+>
+  <Text
+    className="text-xl text-center font-psemibold mt-2"
+  />
+</View>
+`;

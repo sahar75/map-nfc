@@ -1,5 +1,4 @@
 import React, { useMemo } from "react";
-import { View } from "react-native";
 import { Marker } from "react-native-maps";
 const locationImg = require("../../assets/images/origin.png");
 

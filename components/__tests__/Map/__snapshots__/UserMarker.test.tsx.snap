@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserMarker should render correctly with user location 1`] = `
+<Marker
+  coordinate={
+    {
+      "latitude": 37.78825,
+      "longitude": -122.4324,
+    }
+  }
+  image={
+    {
+      "testUri": "../../../assets/images/user-location.png",
+    }
+  }
+  rotation={0}
+  zIndex={100}
+/>
+`;
