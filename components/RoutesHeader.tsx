@@ -12,11 +12,16 @@ const RoutesHeader = () => {
         placeholder="Search..."
         containerStyles="mb-6"
         onSubmit={(query) => {
-          setRecommendations(
-            allRecommendations?.filter((x) =>
-              x.atmName.toLocaleLowerCase().includes(query.toLocaleLowerCase())
-            )
-          );
+          if (query.trim() === "") {
+            setRecommendations(allRecommendations); // Handle empty query
+          } else
+            setRecommendations(
+              allRecommendations?.filter((x) =>
+                x.atmName
+                  .toLocaleLowerCase()
+                  .includes(query.toLocaleLowerCase())
+              )
+            );
         }}
       />
       <Text className="font-bold text-2xl mb-4">Recommended Routes</Text>

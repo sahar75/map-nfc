@@ -148,7 +148,7 @@ function MapComponent() {
         showsMyLocationButton
         zoomControlEnabled
         ref={mapRef}
-        data-testid="map"
+        testID="map"
       >
         <UserMarker selectedRoutePoints={selectedRoutePoints} />
         <DestinationMarker selectedRoutePoints={selectedRoutePoints} />

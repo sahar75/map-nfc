@@ -4,11 +4,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { IRoute } from "../types/route.types";
 import { recommendationMockData } from "../constants/recommendationMockData";
 
-interface RoutePoint {
-  latitude: number;
-  longitude: number;
-}
-
 interface RecommendationState {
   selected: number;
   setSelected: (selected: number) => void;

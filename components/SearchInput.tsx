@@ -29,6 +29,7 @@ const SearchInput: React.FC<ISearchInputProps> = ({
         onPress={() => {
           onSubmit(query);
         }}
+        testID="button"
       >
         <FontAwesome size={28} color="#C4C4C4" name="search" />
       </TouchableOpacity>
@@ -38,6 +39,9 @@ const SearchInput: React.FC<ISearchInputProps> = ({
         placeholder={placeholder}
         placeholderTextColor="#cdcde0"
         onChangeText={(e) => setQuery(e)}
+        onSubmitEditing={() => {
+          onSubmit(query);
+        }}
       />
     </View>
   );

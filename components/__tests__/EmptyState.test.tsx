@@ -1,17 +1,23 @@
 import React from "react";
-import TestRenderer from "react-test-renderer";
+import { render } from "@testing-library/react-native";
 import EmptyState from "../EmptyState";
 
-describe("EmptyState", () => {
-  it("should render correctly with a title", () => {
-    const tree = TestRenderer.create(
-      <EmptyState title="No Data Available" />
-    ).toJSON();
-    expect(tree).toMatchSnapshot();
+describe("EmptyState Component", () => {
+  it("renders correctly with the given title", () => {
+    const title = "No Data Available";
+    const { getByText } = render(<EmptyState title={title} />);
+
+    // Check if the title is rendered
+    const titleElement = getByText(title);
+    expect(titleElement).toBeTruthy();
   });
 
-  it("should render correctly with an empty title", () => {
-    const tree = TestRenderer.create(<EmptyState title="" />).toJSON();
-    expect(tree).toMatchSnapshot();
+  it("renders correctly with a different title", () => {
+    const title = "Loading...";
+    const { getByText } = render(<EmptyState title={title} />);
+
+    // Check if the title is rendered
+    const titleElement = getByText(title);
+    expect(titleElement).toBeTruthy();
   });
 });

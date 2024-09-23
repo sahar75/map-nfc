@@ -20,6 +20,7 @@ const RouteCard: React.FC<IRouteCardProps> = ({
 }) => {
   return (
     <Pressable
+      testID="route-card"
       className={twMerge(
         "bg-white rounded-xl p-5 pt-2 mb-4 border border-[#ECEEF6]",
         selected && "border-violet-700"
