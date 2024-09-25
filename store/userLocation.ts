@@ -7,7 +7,7 @@ interface RoutePoint {
   longitude: number;
 }
 
-interface UserLocationState {
+export interface UserLocationState {
   userLocation: RoutePoint;
   setUserLocation: (userLocation: RoutePoint) => void;
 }

@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for map-nfc/components/Map/OriginMarker.tsx</title>
+    <title>Code coverage report for store/userLocation.ts</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../../../prettify.css" />
-    <link rel="stylesheet" href="../../../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../../../sort-arrow-sprite.png);
+            background-image: url(../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">map-nfc/components/Map</a> OriginMarker.tsx</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">store</a> userLocation.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -30,16 +30,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/20</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>0/4</span>
             </div>
         
             
@@ -88,7 +88,10 @@
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a>
 <a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -99,45 +102,51 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import React, { useMemo } from "react";</span>
-<span class="cstat-no" title="statement not covered" >import { Marker } from "react-native-maps";</span>
-const locationImg = <span class="cstat-no" title="statement not covered" >require("../../assets/images/origin.png");</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import AsyncStorage from "@react-native-async-storage/async-storage";</span>
+<span class="cstat-no" title="statement not covered" >import { create } from "zustand";</span>
+<span class="cstat-no" title="statement not covered" >import { createJSONStorage, devtools, persist } from "zustand/middleware";</span>
 &nbsp;
-interface IProps {
-  selectedRoutePoints: {
-    lat: number;
-    lng: number;
-  }[];
+interface RoutePoint {
+  latitude: number;
+  longitude: number;
 }
 &nbsp;
-const OriginMarker: React.FC&lt;IProps&gt; = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span> selectedRoutePoints }) =&gt; {</span>
-  const origin = <span class="cstat-no" title="statement not covered" >useMemo(<span class="fstat-no" title="function not covered" >() =</span>&gt; <span class="cstat-no" title="statement not covered" >selectedRoutePoints?.[0],</span> [selectedRoutePoints]);</span>
+export interface UserLocationState {
+  userLocation: RoutePoint;
+  setUserLocation: (userLocation: RoutePoint) =&gt; void;
+}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
-    &lt;Marker
-      coordinate={{ latitude: origin?.lat ?? 0, longitude: origin?.lng ?? 0 }}
-      title="Origin"
-      image={locationImg}
-      anchor={{ x: 0.45, y: 0.7 }}
-    /&gt;
-  );
-};
-&nbsp;
-<span class="cstat-no" title="statement not covered" >export default React.memo(OriginMarker);</span>
+export const <span class="cstat-no" title="statement not covered" >useUserLocationStore = create&lt;UserLocationState&gt;()(</span>
+  devtools(
+    persist(
+<span class="fstat-no" title="function not covered" >      (s</span>et) =&gt; (<span class="cstat-no" title="statement not covered" >{</span>
+        userLocation: { latitude: 0, longitude: 0 },
+        setUserLocation: <span class="fstat-no" title="function not covered" >(u</span>serLocation) =&gt; <span class="cstat-no" title="statement not covered" >set(<span class="fstat-no" title="function not covered" >() =</span>&gt; (<span class="cstat-no" title="statement not covered" >{ userLocation })</span>),</span>
+      }),
+      {
+        name: "user-location-storage",
+        storage: createJSONStorage(<span class="fstat-no" title="function not covered" >() =</span>&gt; <span class="cstat-no" title="statement not covered" >AsyncStorage)</span>,
+      }
+    )
+  )
+);
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -145,16 +154,16 @@ const OriginMarker: React.FC&lt;IProps&gt; = <span class="cstat-no" title="state
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-09-24T12:54:46.914Z
+                at 2024-09-24T13:38:22.938Z
             </div>
-        <script src="../../../prettify.js"></script>
+        <script src="../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../../../sorter.js"></script>
-        <script src="../../../block-navigation.js"></script>
+        <script src="../sorter.js"></script>
+        <script src="../block-navigation.js"></script>
     </body>
 </html>
     

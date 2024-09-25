@@ -1,257 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1727099940371" clover="3.2.0">
-  <project timestamp="1727099940371" name="All files">
-    <metrics statements="192" coveredstatements="106" conditionals="109" coveredconditionals="63" methods="53" coveredmethods="26" elements="354" coveredelements="195" complexity="0" loc="192" ncloc="192" packages="7" files="16" classes="16"/>
-    <package name="map-nfc">
-      <metrics statements="8" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="App.tsx" path="E:\projects\git\map-nfc\App.tsx">
-        <metrics statements="7" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="0" type="stmt"/>
-        <line num="2" count="0" type="stmt"/>
-        <line num="3" count="0" type="stmt"/>
-        <line num="4" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
+<coverage generated="1727185102942" clover="3.2.0">
+  <project timestamp="1727185102942" name="All files">
+    <metrics statements="42" coveredstatements="35" conditionals="23" coveredconditionals="22" methods="12" coveredmethods="8" elements="77" coveredelements="65" complexity="0" loc="42" ncloc="42" packages="2" files="3" classes="3"/>
+    <package name="components.Map">
+      <metrics statements="35" coveredstatements="35" conditionals="23" coveredconditionals="22" methods="8" coveredmethods="8"/>
+      <file name="OriginMarker.tsx" path="E:\projects\git\map-nfc\components\Map\OriginMarker.tsx">
+        <metrics statements="7" coveredstatements="7" conditionals="20" coveredconditionals="19" methods="2" coveredmethods="2"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="6" type="cond" truecount="3" falsecount="1"/>
+        <line num="15" count="6" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
       </file>
-      <file name="jest.config.js" path="E:\projects\git\map-nfc\jest.config.js">
-        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="2" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="map-nfc.api">
-      <metrics statements="6" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-      <file name="recommendation.ts" path="E:\projects\git\map-nfc\api\recommendation.ts">
-        <metrics statements="6" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="map-nfc.app">
-      <metrics statements="36" coveredstatements="0" conditionals="7" coveredconditionals="0" methods="7" coveredmethods="0"/>
-      <file name="+html.tsx" path="E:\projects\git\map-nfc\app\+html.tsx">
-        <metrics statements="5" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="0" type="stmt"/>
-        <line num="2" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="34" count="0" type="stmt"/>
-      </file>
-      <file name="_layout.tsx" path="E:\projects\git\map-nfc\app\_layout.tsx">
-        <metrics statements="25" coveredstatements="0" conditionals="5" coveredconditionals="0" methods="5" coveredmethods="0"/>
-        <line num="1" count="0" type="stmt"/>
-        <line num="2" count="0" type="stmt"/>
-        <line num="3" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
-        <line num="36" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="39" count="0" type="stmt"/>
-        <line num="40" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="41" count="0" type="stmt"/>
-        <line num="45" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="46" count="0" type="stmt"/>
-        <line num="49" count="0" type="stmt"/>
-        <line num="53" count="0" type="stmt"/>
-        <line num="55" count="0" type="stmt"/>
-      </file>
-      <file name="modal.tsx" path="E:\projects\git\map-nfc\app\modal.tsx">
-        <metrics statements="6" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="0" type="stmt"/>
-        <line num="2" count="0" type="stmt"/>
-        <line num="3" count="0" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="map-nfc.app.(tabs)">
-      <metrics statements="6" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="index.tsx" path="E:\projects\git\map-nfc\app\(tabs)\index.tsx">
-        <metrics statements="6" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="0" type="stmt"/>
-        <line num="2" count="0" type="stmt"/>
-        <line num="3" count="0" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="map-nfc.components">
-      <metrics statements="62" coveredstatements="57" conditionals="14" coveredconditionals="13" methods="15" coveredmethods="13"/>
-      <file name="EmptyState.tsx" path="E:\projects\git\map-nfc\components\EmptyState.tsx">
-        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="9" count="2" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
-      </file>
-      <file name="Nfc.tsx" path="E:\projects\git\map-nfc\components\Nfc.tsx">
-        <metrics statements="23" coveredstatements="22" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="4"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="11" count="8" type="stmt"/>
-        <line num="14" count="2" type="stmt"/>
-        <line num="15" count="2" type="stmt"/>
-        <line num="17" count="2" type="stmt"/>
-        <line num="19" count="1" type="stmt"/>
-        <line num="20" count="1" type="stmt"/>
-        <line num="21" count="1" type="stmt"/>
-        <line num="23" count="1" type="stmt"/>
-        <line num="26" count="2" type="stmt"/>
-        <line num="27" count="2" type="stmt"/>
-        <line num="31" count="8" type="stmt"/>
-        <line num="32" count="4" type="stmt"/>
-        <line num="40" count="4" type="stmt"/>
-        <line num="43" count="0" type="stmt"/>
-        <line num="47" count="8" type="stmt"/>
-        <line num="56" count="1" type="stmt"/>
-        <line num="64" count="1" type="stmt"/>
-      </file>
-      <file name="RouteCard.tsx" path="E:\projects\git\map-nfc\components\RouteCard.tsx">
-        <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
-        <line num="21" count="4" type="stmt"/>
-        <line num="48" count="1" type="stmt"/>
-      </file>
-      <file name="RoutesHeader.tsx" path="E:\projects\git\map-nfc\components\RoutesHeader.tsx">
-        <metrics statements="12" coveredstatements="12" conditionals="6" coveredconditionals="5" methods="3" coveredmethods="3"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="3" type="stmt"/>
-        <line num="9" count="3" type="stmt"/>
-        <line num="15" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="16" count="1" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
-        <line num="20" count="3" type="stmt"/>
-        <line num="32" count="1" type="stmt"/>
-      </file>
-      <file name="SearchInput.tsx" path="E:\projects\git\map-nfc\components\SearchInput.tsx">
-        <metrics statements="11" coveredstatements="11" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="4"/>
+      <file name="UserMarker.tsx" path="E:\projects\git\map-nfc\components\Map\UserMarker.tsx">
+        <metrics statements="28" coveredstatements="28" conditionals="3" coveredconditionals="3" methods="6" coveredmethods="6"/>
         <line num="1" count="2" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
         <line num="3" count="2" type="stmt"/>
         <line num="4" count="2" type="stmt"/>
-        <line num="13" count="2" type="stmt"/>
-        <line num="19" count="10" type="cond" truecount="4" falsecount="0"/>
-        <line num="21" count="10" type="stmt"/>
-        <line num="30" count="1" type="stmt"/>
-        <line num="41" count="4" type="stmt"/>
-        <line num="43" count="3" type="stmt"/>
-        <line num="50" count="2" type="stmt"/>
-      </file>
-      <file name="StyledText.tsx" path="E:\projects\git\map-nfc\components\StyledText.tsx">
-        <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="1" count="0" type="stmt"/>
-        <line num="2" count="0" type="stmt"/>
-        <line num="4" count="0" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="map-nfc.components.Map">
-      <metrics statements="56" coveredstatements="40" conditionals="88" coveredconditionals="50" methods="13" coveredmethods="11"/>
-      <file name="index.tsx" path="E:\projects\git\map-nfc\components\Map\index.tsx">
-        <metrics statements="56" coveredstatements="40" conditionals="88" coveredconditionals="50" methods="13" coveredmethods="11"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="12" count="10" type="stmt"/>
-        <line num="20" count="9" type="stmt"/>
-        <line num="21" count="9" type="stmt"/>
-        <line num="22" count="9" type="stmt"/>
-        <line num="23" count="3" type="stmt"/>
-        <line num="31" count="9" type="stmt"/>
-        <line num="33" count="9" type="stmt"/>
-        <line num="34" count="3" type="cond" truecount="8" falsecount="2"/>
-        <line num="38" count="9" type="stmt"/>
-        <line num="39" count="9" type="stmt"/>
-        <line num="41" count="9" type="stmt"/>
-        <line num="42" count="3" type="cond" truecount="10" falsecount="2"/>
-        <line num="43" count="3" type="stmt"/>
-        <line num="44" count="3" type="stmt"/>
-        <line num="49" count="3" type="cond" truecount="3" falsecount="1"/>
-        <line num="50" count="3" type="cond" truecount="3" falsecount="1"/>
-        <line num="53" count="3" type="stmt"/>
-        <line num="58" count="9" type="stmt"/>
-        <line num="60" count="3" type="cond" truecount="4" falsecount="2"/>
-        <line num="67" count="9" type="stmt"/>
-        <line num="68" count="3" type="cond" truecount="3" falsecount="0"/>
-        <line num="70" count="0" type="stmt"/>
-        <line num="71" count="0" type="stmt"/>
-        <line num="73" count="0" type="stmt"/>
-        <line num="74" count="0" type="stmt"/>
-        <line num="79" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="80" count="0" type="stmt"/>
-        <line num="81" count="0" type="stmt"/>
-        <line num="85" count="0" type="stmt"/>
-        <line num="88" count="9" type="stmt"/>
-        <line num="89" count="9" type="stmt"/>
-        <line num="91" count="9" type="stmt"/>
-        <line num="92" count="3" type="cond" truecount="3" falsecount="0"/>
-        <line num="93" count="3" type="stmt"/>
-        <line num="98" count="3" type="stmt"/>
-        <line num="102" count="9" type="stmt"/>
-        <line num="103" count="3" type="cond" truecount="2" falsecount="1"/>
-        <line num="105" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="107" count="0" type="cond" truecount="0" falsecount="4"/>
-        <line num="108" count="0" type="cond" truecount="0" falsecount="4"/>
-        <line num="109" count="0" type="stmt"/>
-        <line num="116" count="0" type="cond" truecount="0" falsecount="4"/>
-        <line num="117" count="0" type="cond" truecount="0" falsecount="4"/>
-        <line num="118" count="0" type="stmt"/>
-        <line num="126" count="0" type="cond" truecount="0" falsecount="4"/>
-        <line num="142" count="9" type="stmt"/>
-        <line num="176" count="1" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="9" type="stmt"/>
+        <line num="17" count="9" type="stmt"/>
+        <line num="19" count="9" type="stmt"/>
+        <line num="21" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="27" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="43" count="9" type="stmt"/>
+        <line num="45" count="8" type="stmt"/>
+        <line num="46" count="8" type="stmt"/>
+        <line num="47" count="8" type="cond" truecount="1" falsecount="0"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="52" count="1" type="stmt"/>
+        <line num="55" count="7" type="stmt"/>
+        <line num="65" count="8" type="stmt"/>
+        <line num="67" count="8" type="stmt"/>
+        <line num="68" count="8" type="stmt"/>
+        <line num="72" count="9" type="stmt"/>
+        <line num="83" count="2" type="stmt"/>
       </file>
     </package>
-    <package name="map-nfc.store">
-      <metrics statements="18" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="14" coveredmethods="2"/>
-      <file name="recommendations.ts" path="E:\projects\git\map-nfc\store\recommendations.ts">
-        <metrics statements="11" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="2"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="17" count="1" type="stmt"/>
-        <line num="20" count="1" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="38" count="1" type="stmt"/>
-      </file>
+    <package name="store">
+      <metrics statements="7" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
       <file name="userLocation.ts" path="E:\projects\git\map-nfc\store\userLocation.ts">
         <metrics statements="7" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>

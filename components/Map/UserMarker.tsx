@@ -41,8 +41,9 @@ const UserMarker: React.FC<IProps> = ({ selectedRoutePoints }) => {
   );
 
   useEffect(() => {
+    let locationSubscription: Location.LocationSubscription;
     const requestLocationPermissions = async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
+      const { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== "granted") {
         Alert.alert(
           "Permission Denied",
@@ -51,7 +52,7 @@ const UserMarker: React.FC<IProps> = ({ selectedRoutePoints }) => {
         return;
       }
 
-      const locationSubscription = Location.watchPositionAsync(
+      locationSubscription = await Location.watchPositionAsync(
         {
           accuracy: Location.Accuracy.BestForNavigation,
           distanceInterval: 1,
@@ -59,10 +60,13 @@ const UserMarker: React.FC<IProps> = ({ selectedRoutePoints }) => {
         },
         handleLocationUpdate
       );
-
-      return () => locationSubscription.then((sub) => sub.remove());
     };
+
     requestLocationPermissions();
+
+    return () => {
+      locationSubscription.remove();
+    };
   }, []);
 
   return (
@@ -71,6 +75,7 @@ const UserMarker: React.FC<IProps> = ({ selectedRoutePoints }) => {
       rotation={userMarkerRotation}
       zIndex={100}
       image={locationImg}
+      testID="user-marker"
     />
   );
 };

@@ -13,7 +13,7 @@ const RoutesHeader = () => {
         containerStyles="mb-6"
         onSubmit={(query) => {
           if (query.trim() === "") {
-            setRecommendations(allRecommendations); // Handle empty query
+            setRecommendations(allRecommendations);
           } else
             setRecommendations(
               allRecommendations?.filter((x) =>
