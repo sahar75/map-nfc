@@ -1,12 +1,12 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-import Nfc from "./components/Nfc";
+import { StyleSheet, View } from "react-native";
+import ReadLogin from "./components/ReadLogin";
 
 export default function App() {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <Nfc />
+      <ReadLogin />
     </View>
   );
 }

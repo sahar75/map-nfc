@@ -1,10 +1,10 @@
 import { StyleSheet, View } from "react-native";
-import Nfc from "../../components/Nfc";
+import ReadLogin from "../../components/ReadLogin";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Nfc />
+      <ReadLogin />
     </View>
   );
 }

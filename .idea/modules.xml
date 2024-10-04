@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/map-nfc.iml" filepath="$PROJECT_DIR$/.idea/map-nfc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/desmer-web-app.iml" filepath="$PROJECT_DIR$/.idea/desmer-web-app.iml" />
     </modules>
   </component>
 </project>

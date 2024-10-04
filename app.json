@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "map",
-    "slug": "map",
+    "name": "desmer-web-app",
+    "slug": "desmer-web-app",
     "version": "1.0.0",
     "orientation": "default",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "scheme": "map-scheme",
+    "scheme": "desmer-web-app-scheme",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -20,7 +20,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.sahar752.map",
+      "package": "com.sahar75.desmerWebApp",
       "config": {
         "googleMaps": {
           "apiKey": "AIzaSyAw6h7_yBSK8xyiUphsBvIT-G4GqUUGPPQ"
@@ -39,7 +39,7 @@
         "origin": false
       },
       "eas": {
-        "projectId": "c6674c56-3bbf-4226-92f1-d75553559a8a"
+        "projectId": "84a1f26f-e0d8-4128-a49c-e31d3dda5243"
       }
     }
   }
