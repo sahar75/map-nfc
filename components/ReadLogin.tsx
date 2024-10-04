@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import SimCardsManagerModule from "react-native-sim-cards-manager";
+import NotificationComponent from "./NotificationComponent";
 
 function ReadLogin() {
+  //read sims info
   useEffect(() => {
     SimCardsManagerModule.getSimCards({
       title: "App Permission",
@@ -21,7 +23,7 @@ function ReadLogin() {
 
   return (
     <View style={styles.wrapper}>
-      <Text>wait for login...</Text>
+      <NotificationComponent />
     </View>
   );
 }
