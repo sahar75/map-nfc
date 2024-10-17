@@ -15,7 +15,7 @@ const NotificationComponent: React.FC = () => {
       .build();
 
     // Start the connection
-    connection.current
+    connection.current 
       .start()
       .then(() => console.log("Connected to Notification Hub"))
       .catch((err: Error) => {
