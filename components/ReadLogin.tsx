@@ -36,58 +36,65 @@
 // export default ReadLogin;
 
 import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, View, TouchableOpacity, Alert } from "react-native";
-import NfcManager, { NfcTech, TagEvent } from "react-native-nfc-manager";
+import { StyleSheet, Text, View } from "react-native";
 import DeviceInfo from "react-native-device-info";
-import RNSimData from "react-native-sim-data";
 
 const ReadLogin = () => {
-  const [isNfcEnabled, setIsNfcEnabled] = useState(false);
-  const [tagInfo, setTagInfo] = useState<TagEvent | null>(null);
+  // const [isNfcEnabled, setIsNfcEnabled] = useState(false);
+  // const [tagInfo, setTagInfo] = useState<TagEvent | null>(null);
+  const [id, setId] = useState("");
+
+  // useEffect(() => {
+  //   NfcManager.start();
+
+  //   const checkNfcAvailability = async () => {
+  //     const isSupported = await NfcManager.isSupported();
+  //     setIsNfcEnabled(isSupported);
+  //   };
+
+  //   checkNfcAvailability();
+
+  //   return () => {
+  //     NfcManager.close();
+  //     NfcManager.cancelTechnologyRequest();
+  //     NfcManager.clearBackgroundTag();
+  //   };
+  // }, []);
+
+  // const readNfc = async () => {
+  //   try {
+  //     await NfcManager.requestTechnology(NfcTech.Ndef);
+  //     const tag = await NfcManager.getTag();
+  //     console.log("Tag found", tag);
+  //     setTagInfo(tag); // You can modify this to parse finer details
+  //     Alert.alert("NFC Tag", JSON.stringify(tag, null, 2)); // Alert showing the tag info
+  //   } catch (ex) {
+  //     Alert.alert("Error", "Failed to read NFC tag. Please try again.");
+  //     console.warn(ex);
+  //   } finally {
+  //     NfcManager.close();
+  //     NfcManager.cancelTechnologyRequest();
+  //     NfcManager.clearBackgroundTag();
+  //   }
+  // };
 
   useEffect(() => {
-    NfcManager.start();
-
-    const checkNfcAvailability = async () => {
-      const isSupported = await NfcManager.isSupported();
-      setIsNfcEnabled(isSupported);
+    const fetchUniqueId = async () => {
+      const id = await DeviceInfo.getUniqueId();
+      setId(id);
+      console.log(id);
     };
 
-    checkNfcAvailability();
-
-    console.log("Sim", RNSimData.getSimInfo());
-
-    return () => {
-      NfcManager.close();
-      NfcManager.cancelTechnologyRequest();
-      NfcManager.clearBackgroundTag();
-    };
-  }, []);
-
-  const readNfc = async () => {
-    try {
-      await NfcManager.requestTechnology(NfcTech.Ndef);
-      const tag = await NfcManager.getTag();
-      console.log("Tag found", tag);
-      setTagInfo(tag); // You can modify this to parse finer details
-      Alert.alert("NFC Tag", JSON.stringify(tag, null, 2)); // Alert showing the tag info
-    } catch (ex) {
-      Alert.alert("Error", "Failed to read NFC tag. Please try again.");
-      console.warn(ex);
-    } finally {
-      NfcManager.close();
-      NfcManager.cancelTechnologyRequest();
-      NfcManager.clearBackgroundTag();
-    }
-  };
-
-  useEffect(() => {
-    console.log("DeviceInfo", DeviceInfo.getDeviceName());
+    fetchUniqueId();
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>NFC Reader</Text>
+      <Text className="mb-10">
+        device unique id :::{" "}
+        <Text className="font-bold text-lime-600 text-2xl">{id}</Text>
+      </Text>
+      {/* <Text style={styles.title}>NFC Reader</Text>
       {isNfcEnabled ? (
         <TouchableOpacity style={styles.button} onPress={readNfc}>
           <Text style={styles.buttonText}>Scan NFC Tag</Text>
@@ -102,7 +109,7 @@ const ReadLogin = () => {
             {JSON.stringify(tagInfo, null, 2)}
           </Text>
         </View>
-      )}
+      )} */}
     </View>
   );
 };
@@ -114,33 +121,33 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 20,
   },
-  title: {
-    fontSize: 24,
-    marginBottom: 20,
-  },
-  button: {
-    backgroundColor: "#007AFF",
-    padding: 15,
-    borderRadius: 5,
-  },
-  buttonText: {
-    color: "#fff",
-    fontSize: 18,
-  },
-  warning: {
-    color: "red",
-    marginTop: 20,
-  },
-  tagInfoContainer: {
-    marginTop: 20,
-    padding: 10,
-    borderColor: "gray",
-    borderWidth: 1,
-    width: "100%",
-  },
-  infoText: {
-    fontSize: 16,
-  },
+  // title: {
+  //   fontSize: 24,
+  //   marginBottom: 20,
+  // },
+  // button: {
+  //   backgroundColor: "#007AFF",
+  //   padding: 15,
+  //   borderRadius: 5,
+  // },
+  // buttonText: {
+  //   color: "#fff",
+  //   fontSize: 18,
+  // },
+  // warning: {
+  //   color: "red",
+  //   marginTop: 20,
+  // },
+  // tagInfoContainer: {
+  //   marginTop: 20,
+  //   padding: 10,
+  //   borderColor: "gray",
+  //   borderWidth: 1,
+  //   width: "100%",
+  // },
+  // infoText: {
+  //   fontSize: 16,
+  // },
 });
 
 export default ReadLogin;
