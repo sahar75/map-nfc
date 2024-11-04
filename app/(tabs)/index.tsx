@@ -1,10 +1,10 @@
 import { StyleSheet, View } from "react-native";
-import ReadLogin from "../../components/ReadLogin";
+import LoginQrCode from "../../components/LoginQrCode";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <ReadLogin />
+      <LoginQrCode />
     </View>
   );
 }

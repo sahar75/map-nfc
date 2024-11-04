@@ -35,14 +35,14 @@
 
 // export default ReadLogin;
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import DeviceInfo from "react-native-device-info";
+import { useGetUniqueId } from "../hooks/useGetUniqueId";
 
 const ReadLogin = () => {
   // const [isNfcEnabled, setIsNfcEnabled] = useState(false);
   // const [tagInfo, setTagInfo] = useState<TagEvent | null>(null);
-  const [id, setId] = useState("");
+  const id = useGetUniqueId();
 
   // useEffect(() => {
   //   NfcManager.start();
@@ -78,20 +78,10 @@ const ReadLogin = () => {
   //   }
   // };
 
-  useEffect(() => {
-    const fetchUniqueId = async () => {
-      const id = await DeviceInfo.getUniqueId();
-      setId(id);
-      console.log(id);
-    };
-
-    fetchUniqueId();
-  }, []);
-
   return (
     <View style={styles.container}>
       <Text className="mb-10">
-        device unique id :::{" "}
+        device unique id :{" "}
         <Text className="font-bold text-lime-600 text-2xl">{id}</Text>
       </Text>
       {/* <Text style={styles.title}>NFC Reader</Text>
