@@ -1,34 +1,54 @@
-import React, { useEffect, useState } from "react";
-import { Text, View } from "react-native";
+import React, { useEffect } from "react";
+import { Pressable, Text, View } from "react-native";
 import QRCode from "react-native-qrcode-svg";
-import { useGetUniqueId } from "../hooks/useGetUniqueId";
 import { useGenerateHash } from "../hooks/queries/useGenerateHash";
+import { useGetUniqueId } from "../hooks/useGetUniqueId";
+import { useUserStore } from "../store/user";
 import { encryptTabletId } from "../utils/encryptTabletId";
 import { setTabletUniqueIdHash } from "../utils/user";
+import Timer from "./Timer";
 
 const LoginQrCode = () => {
   const uniqueId = useGetUniqueId();
+  const { setUserHash, userHash } = useUserStore();
   const {
     data: qrCodeValue,
     isError,
-    isFetching,
-    isLoading,
     isPending,
+    mutate: generateHash,
+    reset,
   } = useGenerateHash();
 
-  const [timer, setTimer] = useState(1200); // 20 minutes in seconds
-
-  const loading = isFetching || isLoading || isPending;
+  console.log("userHash", userHash);
 
   const renderQrCode = () => {
     switch (true) {
-      case loading:
-        return <Text>Loading...</Text>;
+      case isPending:
+        return <Text className="mb-4">Loading...</Text>;
       case isError:
-        return <Text>Error in fetching QR Code!</Text>;
+        return <Text className="mb-4">Error in fetching QR Code!</Text>;
+
+      case Boolean(userHash):
+        return (
+          <>
+            <Text className="mb-8 text-xl font-bold text-[#5932EA]">
+              Scan QR Code to login
+            </Text>
+            <QRCode value={userHash} size={200} />
+          </>
+        );
 
       default:
-        return <QRCode value={qrCodeValue} size={200} />;
+        return (
+          <Pressable
+            onPress={() => generateHash()}
+            className="bg-[#5932EA] p-4 rounded-xl mb-4"
+          >
+            <Text className="text-white font-medium">
+              Get QR Code for login
+            </Text>
+          </Pressable>
+        );
     }
   };
 
@@ -44,41 +64,13 @@ const LoginQrCode = () => {
   }, [uniqueId, setTabletUniqueIdHash]);
 
   useEffect(() => {
-    if (qrCodeValue) {
-      setTimer(1200); // Reset timer to 20 minutes
-
-      const interval = setInterval(() => {
-        setTimer((prev) => {
-          if (prev <= 1) {
-            clearInterval(interval);
-            return 0; // Stop the timer at 0
-          }
-          return prev - 1; // Decrement timer
-        });
-      }, 1000); // Update timer every second
-
-      return () => clearInterval(interval); // Cleanup on unmount or when qrCodeValue changes
-    }
+    setUserHash(qrCodeValue);
   }, [qrCodeValue]);
-
-  const formatTime = (seconds: number) => {
-    const minutes = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${String(minutes).padStart(2, "0")}:${String(secs).padStart(
-      2,
-      "0"
-    )}`;
-  };
 
   return (
     <View className="items-center">
-      <Text className="mb-6 text-lg">Scan QR Code for login</Text>
       {renderQrCode()}
-      {qrCodeValue && (
-        <Text className="mt-4 text-lg">
-          Time Remaining: {formatTime(timer)}
-        </Text>
-      )}
+      {Boolean(userHash) && <Timer reset={reset} qrCodeValue={userHash} />}
     </View>
   );
 };
