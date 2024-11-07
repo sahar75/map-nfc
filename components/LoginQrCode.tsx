@@ -19,8 +19,6 @@ const LoginQrCode = () => {
     reset,
   } = useGenerateHash();
 
-  console.log("userHash", userHash);
-
   const renderQrCode = () => {
     switch (true) {
       case isPending:
