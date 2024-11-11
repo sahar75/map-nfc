@@ -39,7 +39,9 @@ const LoginQrCode = () => {
       default:
         return (
           <Pressable
-            onPress={() => generateHash()}
+            onPress={() => {
+              generateHash();
+            }}
             className="bg-[#5932EA] p-4 rounded-xl mb-4"
           >
             <Text className="text-white font-medium">

@@ -22,6 +22,9 @@ const NotificationComponent: React.FC = () => {
   const loginConnection = useRef<HubConnection | null>(null);
   const logoutConnection = useRef<HubConnection | null>(null);
   const { userHash, setUserHash, isLogin, setIsLogin } = useUserStore();
+  const isLoginRef = useRef(isLogin);
+  const mutationState = useMutationState();
+  const { reset: resetQrCode } = useGenerateHash();
   const {
     mutate: loginMutate,
     data: loginData,
@@ -37,6 +40,15 @@ const NotificationComponent: React.FC = () => {
     },
   });
 
+  const logout = async () => {
+    setUserHash("");
+    reset();
+    setIsLogin(false);
+    logoutConnection?.current?.stop();
+    await setToken("");
+    router.push("/");
+  };
+
   // Function to start the SignalR connection with retry logic
   const startConnection = async (
     connectionRef: React.MutableRefObject<HubConnection | null>,
@@ -51,51 +63,43 @@ const NotificationComponent: React.FC = () => {
           .build();
 
         await connectionRef.current.start();
-        console.log("Connected to SignalR Hub " + type);
+        console.log(`Connected to SignalR Hub ${type}`);
 
-        // Handle receiving notifications from the hub
-        connectionRef?.current?.on(
-          "ReceiveLogoutNotification",
-          async (message: string) => {
-            if (message === userHash) {
-              setUserHash("");
-              reset();
-              setIsLogin(false);
-              connectionRef?.current?.stop();
-              await setToken("");
-              router.push("/");
+        if (type === "logout")
+          connectionRef?.current?.on(
+            "ReceiveLogoutNotification",
+            async (message: string) => {
+              if (message === userHash) {
+                logout();
+              }
             }
-          }
-        );
+          );
 
         setIsConnected(true);
         setRetrying(false);
-      } catch (err: any) {
-        console.error("Connection failed, retrying in 5 seconds 1");
-        if (err?.message.includes("Status code '401'")) {
-          setUserHash("");
-          reset();
-          logoutConnection?.current?.stop();
-          setIsLogin(false);
-          await setToken("");
-          router.push("/");
+      } catch (error: any) {
+        if (error?.message.includes("Status code '401'")) {
+          logout();
+        } else {
+          console.error("Connection failed, retrying in 5 seconds", error);
+          setIsConnected(false);
+          setRetrying(true);
+          setTimeout(
+            () => startConnection(connectionRef, url, headers, type),
+            5000
+          );
         }
-        setIsConnected(false);
-        setRetrying(true);
-        setTimeout(
-          () => startConnection(connectionRef, url, headers, type),
-          5000
-        );
       }
   };
-  const data = useMutationState();
-  const { reset: resetQrCode } = useGenerateHash();
+
+  useEffect(() => {
+    isLoginRef.current = isLogin;
+  }, [isLogin]);
 
   useEffect(() => {
     if (userHash && !isLogin) {
       const ReceiveLoginNotification = async () => {
         const headers = await useGenerateHeaders();
-        // Create a connection to the SignalR Hub
         await startConnection(
           loginConnection,
           `${API_URL}${urls.loginNotifyHub}`,
@@ -103,7 +107,6 @@ const NotificationComponent: React.FC = () => {
           "login"
         );
 
-        // Handle receiving notifications from the hub
         loginConnection?.current?.on(
           "ReceiveLoginNotification",
           (message: string) => {
@@ -123,33 +126,22 @@ const NotificationComponent: React.FC = () => {
       };
 
       ReceiveLoginNotification();
-
-      // Clean up connection on unmount
     } else {
       loginConnection?.current?.stop();
-      // user hash ba meghdare ghabli por beshe
-      // if (typeof data?.[0]?.data === "string" && isLogin)
-      //   setUserHash(data?.[0]?.data);
     }
     return () => {
       loginConnection?.current?.stop();
-      // user hash ba meghdare ghabli por beshe
-      // if (typeof data?.[0]?.data === "string" && isLogin)
-      //   setUserHash(data?.[0]?.data);
     };
   }, [userHash]);
 
   useEffect(() => {
     if (loginData) {
       loginConnection?.current?.stop();
-      if (typeof data?.[0]?.data === "string") setUserHash(data?.[0]?.data);
+      if (typeof mutationState?.[0]?.data === "string")
+        setUserHash(mutationState?.[0]?.data);
     }
   }, [loginData]);
-  const isLoginRef = useRef(isLogin);
 
-  useEffect(() => {
-    isLoginRef.current = isLogin; // update the ref whenever isLogin changes
-  }, [isLogin]);
   useEffect(() => {
     if (isLoginRef.current) {
       const ReceiveLogoutNotification = async () => {
@@ -164,29 +156,26 @@ const NotificationComponent: React.FC = () => {
 
         logoutConnection?.current?.onclose(async (error) => {
           if (isLoginRef.current) {
-            console.error("Connection failed, retrying in 5 seconds", error);
             if (error?.message.includes("Status code '401'")) {
-              setUserHash("");
-              reset();
-              setIsLogin(false);
-              logoutConnection?.current?.stop();
-              await setToken("");
-              router.push("/");
+              logout();
+            } else {
+              console.error("Connection failed, retrying in 5 seconds", error);
+              setIsConnected(false);
+              setRetrying(true);
+              setTimeout(
+                () =>
+                  startConnection(
+                    logoutConnection,
+                    `${API_URL}${urls.logoutNotifyHub}`,
+                    headers,
+                    "logout"
+                  ),
+                5000
+              );
             }
-            setIsConnected(false);
-            setRetrying(true);
-            setTimeout(
-              () =>
-                startConnection(
-                  logoutConnection,
-                  `${API_URL}${urls.logoutNotifyHub}`,
-                  headers,
-                  "logout"
-                ),
-              5000
-            );
           }
         });
+        
       };
 
       ReceiveLogoutNotification();

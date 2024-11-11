@@ -26,6 +26,8 @@ export const apiCall = async (
   options?: RequestInit,
   sendToken?: boolean
 ) => {
+  console.log("API_URL", API_URL);
+  console.log("Request Options:", options);
   try {
     const headers = await useGenerateHeaders(sendToken);
     const response = await fetch(`${API_URL}${endpoint}`, {
@@ -36,14 +38,27 @@ export const apiCall = async (
         ...options?.headers,
       },
     });
+    console.log(`${API_URL}${endpoint}`, {
+      endpoint,
+      options,
+      sendToken,
+      headers,
+      response,
+    });
+    // Log response details
+    console.log("Response Status:", response.status);
+    console.log("Response Headers:", response.headers);
+
     if (!response.ok) {
       handleApiErrors(response);
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    return await response.json();
+    const data = await response.json();
+    console.log("Response Data:", data);
+    return data;
   } catch (error) {
-    console.error(error);
+    console.error("API Call Error:", error);
     throw error;
   }
 };
