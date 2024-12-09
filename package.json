@@ -37,7 +37,8 @@
     "react-native-svg": "^15.8.0",
     "react-native-web": "~0.19.10",
     "tailwind-merge": "^2.5.2",
-    "zustand": "^4.5.5"
+    "zustand": "^4.5.5",
+    "expo-application": "~5.9.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

@@ -114,8 +114,8 @@ android {
         applicationId 'com.sahar75.desmerWebApp'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0.0"
+        versionCode 001
+        versionName "0.0.1"
     }
     signingConfigs {
         debug {
@@ -144,6 +144,7 @@ android {
             useLegacyPackaging (findProperty('expo.useLegacyPackaging')?.toBoolean() ?: false)
         }
     }
+  
 }
 
 // Apply static values from `gradle.properties` to the `android.packagingOptions`
