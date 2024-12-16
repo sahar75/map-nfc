@@ -22,6 +22,7 @@ const NotificationComponent: React.FC = () => {
   const loginConnection = useRef<HubConnection | null>(null);
   const logoutConnection = useRef<HubConnection | null>(null);
   const { userHash, setUserHash, isLogin, setIsLogin } = useUserStore();
+  console.log("isLogin", isLogin);
   const isLoginRef = useRef(isLogin);
   const mutationState = useMutationState();
   const { reset: resetQrCode } = useGenerateHash();
@@ -58,6 +59,7 @@ const NotificationComponent: React.FC = () => {
   ) => {
     if (connectionRef)
       try {
+        console.log({ connectionRef, url, headers, type });
         connectionRef.current = new HubConnectionBuilder()
           .withUrl(url, { headers })
           .build();
@@ -141,6 +143,7 @@ const NotificationComponent: React.FC = () => {
         setUserHash(mutationState?.[0]?.data);
     }
   }, [loginData]);
+  console.log("userHash", userHash);
 
   useEffect(() => {
     if (isLoginRef.current) {
@@ -155,6 +158,7 @@ const NotificationComponent: React.FC = () => {
         );
 
         logoutConnection?.current?.onclose(async (error) => {
+          console.log("isLoginRef.current", isLoginRef.current);
           if (isLoginRef.current) {
             if (error?.message.includes("Status code '401'")) {
               logout();
@@ -175,7 +179,6 @@ const NotificationComponent: React.FC = () => {
             }
           }
         });
-        
       };
 
       ReceiveLogoutNotification();

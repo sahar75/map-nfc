@@ -11,6 +11,8 @@ import { useEffect } from "react";
 import "react-native-reanimated";
 import { useColorScheme } from "../components/useColorScheme.web";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Try } from "expo-router/build/views/Try";
+import { ErrorBoundary } from "./ErrorBoundary";
 
 const queryClient = new QueryClient();
 
@@ -45,7 +47,7 @@ export default function RootLayout() {
   }, [loaded]);
 
   if (!loaded) {
-    return null;
+    return <></>;
   }
 
   return <RootLayoutNav />;
@@ -55,13 +57,15 @@ function RootLayoutNav() {
   const colorScheme = useColorScheme();
 
   return (
-    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <QueryClientProvider client={queryClient}>
-        <Stack>
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="modal" options={{ presentation: "modal" }} />
-        </Stack>
-      </QueryClientProvider>
-    </ThemeProvider>
+    <Try catch={ErrorBoundary}>
+      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+        <QueryClientProvider client={queryClient}>
+          <Stack>
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen name="modal" options={{ presentation: "modal" }} />
+          </Stack>
+        </QueryClientProvider>
+      </ThemeProvider>
+    </Try>
   );
 }

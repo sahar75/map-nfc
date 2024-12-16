@@ -30,6 +30,7 @@ export const apiCall = async (
   console.log("Request Options:", options);
   try {
     const headers = await useGenerateHeaders(sendToken);
+
     const response = await fetch(`${API_URL}${endpoint}`, {
       ...options,
       headers: {
